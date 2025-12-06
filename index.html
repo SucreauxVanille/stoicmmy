@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no" />
+  <title>スイミー（ゲームモード）</title>
+
+  <style>
+    /* ==============================
+       基本リセット
+    ============================== */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      touch-action: none;
+      background: #000;
+      font-family: sans-serif;
+    }
+
+    /* ==============================
+       Canvas
+    ============================== */
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: #87ceeb;
+    }
+
+    /* ==============================
+       UI 共通
+    ============================== */
+    #ui {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+      color: #fff;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    /* ==============================
+       スコア & タイマー
+    ============================== */
+    #score, #time {
+      position: absolute;
+      top: 10px;
+      font-size: 20px;
+    }
+
+    #score { left: 10px; }
+    #time  { right: 10px; }
+
+    /* ==============================
+       難易度選択メニュー
+    ============================== */
+    #menu {
+      pointer-events: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      gap: 16px;
+    }
+
+    #menu button {
+      font-size: 20px;
+      padding: 16px 26px;
+      border: none;
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      backdrop-filter: blur(4px);
+    }
+
+    #menu button:active {
+      transform: scale(0.96);
+    }
+
+    /* ==============================
+       リザルト表示（将来用）
+    ============================== */
+    #result {
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 36px;
+      display: none;
+    }
+
+    /* ==============================
+       スマホ微調整
+    ============================== */
+    @media (max-width: 600px) {
+      #menu {
+        flex-direction: column;
+      }
+      #menu button {
+        font-size: 22px;
+        padding: 18px 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- UIレイヤー -->
+  <div id="ui">
+    <div id="menu">
+      <button data-diff="easy">EASY</button>
+      <button data-diff="normal">NORMAL</button>
+      <button data-diff="hard">HARD</button>
+    </div>
+
+    <div id="score">Score: 0</div>
+    <div id="time">Time: 30</div>
+    <div id="result"></div>
+  </div>
+
+  <!-- ゲーム描画 -->
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- ゲームロジック -->
+  <script src="script.js"></script>
+</body>
+</html>
