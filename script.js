@@ -85,7 +85,7 @@ redImg.src = "red.gif";
 // ==============================
 const DIFFICULTY = {
   easy: { playerSpeed: 5, spawnInterval: 80, fishSpeed: { base: 2, rand: 1.5 } },
-  normal: { playerSpeed: 8, spawnInterval: 40, fishSpeed: { base: 3.5, rand: 1.8 } },
+  normal: { playerSpeed: 8, spawnInterval: 25, fishSpeed: { base: 3.5, rand: 1.5 } },
   hard: { playerSpeed: 12, spawnInterval: 5, fishSpeed: { base: 5, rand: 2 } }
 };
 let currentDifficulty = null;
